@@ -1,0 +1,338 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #0a192f;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    filter: blur(45px);
+    z-index: -1;
+}
+
+body::before {
+    background: linear-gradient(to right, #00f5a0, #00d9f5);
+    top: -10%;
+    left: -10%;
+    transform: rotate(-45deg);
+    opacity: 0.3;
+}
+
+body::after {
+    background: linear-gradient(to right, #7928ca, #ff0080);
+    bottom: -10%;
+    right: -10%;
+    transform: rotate(45deg);
+    opacity: 0.3;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 300px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.form {
+    width: 100%;
+    animation: formAppear 0.6s ease-out;
+}
+
+@keyframes formAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1rem;
+    animation: slideIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 165, 0, 0.2);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #ffa500;
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.2);
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus::placeholder {
+    opacity: 0.5;
+    transform: translateY(-5px);
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #ffa500;
+    color: #4a0404;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    animation: buttonAppear 0.5s ease-out forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+    transform: translateY(10px);
+    font-weight: bold;
+}
+
+@keyframes buttonAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+button:hover {
+    background: #ff8c00;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.error-message {
+    color: white;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.form-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    animation: linksAppear 0.5s ease-out forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+@keyframes linksAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-links a {
+    color: #ffa500;
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.form-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #ffa500;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.form-links a:hover {
+    opacity: 1;
+}
+
+.form-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Add shake animation for error states */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: logoAppear 1s ease-out;
+    position: relative;
+}
+
+@keyframes logoAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 15px rgba(255, 165, 0, 0.5));
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.logo-container h1 {
+    color: #ffa500;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    margin: 0;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 165, 0, 0.5),
+                 0 0 20px rgba(255, 165, 0, 0.3),
+                 0 0 30px rgba(255, 165, 0, 0.2);
+    animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+/* Add glowing animations */
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 15px rgba(255, 165, 0, 0.5));
+    }
+    to {
+        filter: drop-shadow(0 0 25px rgba(255, 165, 0, 0.8))
+               drop-shadow(0 0 35px rgba(255, 165, 0, 0.4));
+    }
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 165, 0, 0.5),
+                     0 0 20px rgba(255, 165, 0, 0.3),
+                     0 0 30px rgba(255, 165, 0, 0.2);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 165, 0, 0.6),
+                     0 0 30px rgba(255, 165, 0, 0.4),
+                     0 0 40px rgba(255, 165, 0, 0.3);
+    }
+}
+
+/* Add a subtle fire effect behind the logo */
+.logo-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, 
+        rgba(255, 165, 0, 0.2) 0%,
+        rgba(255, 69, 0, 0.1) 50%,
+        transparent 70%);
+    filter: blur(20px);
+    z-index: -1;
+    animation: fireGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes fireGlow {
+    from {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+} 

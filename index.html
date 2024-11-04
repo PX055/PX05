@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container" id="loginContainer">
+        <div class="logo-container">
+            <img src="phoenix-logo.png" alt="Phoenix" class="logo">
+            <h1>PHOENIX</h1>
+        </div>
+        <form id="loginForm" class="form">
+            <div class="form-group">
+                <input type="text" id="loginEmail" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="loginPassword" placeholder="Password" required>
+            </div>
+            <button type="submit">LOGIN</button>
+            <div class="form-links">
+                <a href="#" id="showRegister">Register</a>
+                <a href="#" id="showForgotPassword">Forgot Password?</a>
+            </div>
+            <p class="error-message" id="loginError"></p>
+        </form>
+    </div>
+
+    <div class="form-container hidden" id="registerContainer">
+        <div class="logo-container">
+            <img src="phoenix-logo.png" alt="Phoenix" class="logo">
+            <h1>PHOENIX</h1>
+        </div>
+        <form id="registerForm" class="form">
+            <div class="form-group">
+                <input type="text" id="registerUsername" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="registerEmail" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="registerPassword" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+            <button type="submit">REGISTER</button>
+            <div class="form-links">
+                <a href="#" id="showLogin">Back to Login</a>
+            </div>
+            <p class="error-message" id="registerError"></p>
+        </form>
+    </div>
+
+    <div class="form-container hidden" id="forgotContainer">
+        <div class="logo-container">
+            <img src="phoenix-logo.png" alt="Phoenix" class="logo">
+            <h1>PHOENIX</h1>
+        </div>
+        <form id="forgotForm" class="form">
+            <div class="form-group">
+                <input type="email" id="forgotEmail" placeholder="Email" required>
+            </div>
+            <button type="submit">RESET PASSWORD</button>
+            <div class="form-links">
+                <a href="#" id="backToLogin">Back to Login</a>
+            </div>
+            <p class="error-message" id="forgotError"></p>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix Chat Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Add Friend Modal -->
+    <div class="modal" id="addFriendModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Friend</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-friend">
+                    <input type="text" id="friendUsername" placeholder="Enter username">
+                    <button id="searchFriend">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div id="searchResults" class="search-results">
+                    <!-- Search results will appear here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <div class="chat-sidebar">
+            <div class="sidebar-header">
+                <img src="phoenix-logo.png" alt="Phoenix" class="sidebar-logo">
+                <h2>Phoenix Chat</h2>
+            </div>
+            <div class="user-profile">
+                <div class="profile-info">
+                    <span class="username" id="username">Loading...</span>
+                    <span class="status">Online</span>
+                </div>
+            </div>
+            <div class="add-friend-section">
+                <button id="addFriendBtn" class="add-friend-btn">
+                    <i class="fas fa-user-plus"></i> Add Friend
+                </button>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search contacts...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="contacts-list" id="contactsList">
+                <!-- Contacts will be added here dynamically -->
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+        
+        <div class="chat-main">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="chat-header">
+                <div class="chat-contact-info">
+                    <h3 id="currentChatName">Select a contact</h3>
+                    <span class="contact-status">offline</span>
+                </div>
+                <div class="current-time" id="currentTime">
+                    <!-- Time will be added here -->
+                </div>
+                <div class="chat-actions">
+                    <button><i class="fas fa-phone"></i></button>
+                    <button><i class="fas fa-video"></i></button>
+                    <button id="clearChatBtn" title="Clear Chat History">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    <button><i class="fas fa-ellipsis-v"></i></button>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be added here dynamically -->
+            </div>
+            
+            <div class="chat-input">
+                <button class="attach-btn">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <input type="text" id="messageInput" placeholder="Type a message...">
+                <button class="emoji-btn">
+                    <i class="far fa-smile"></i>
+                </button>
+                <button class="send-btn" id="sendMessage">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteConfirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Clear Chat History</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: white; margin-bottom: 20px;">Are you sure you want to clear all chat history with this contact?</p>
+                <div class="modal-buttons">
+                    <button id="confirmDelete" class="delete-btn">Clear History</button>
+                    <button id="cancelDelete" class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html> 
